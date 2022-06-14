@@ -1,7 +1,10 @@
 // To use this module
-const fs = require('fs');
-const inquirer = require("inquirer");
+// const fs = require('fs');
+const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generate-site');
+// const { writeFile, copyFile } = require('fs/promises');
+
 
 // setup mock data
 const mockData = {
@@ -186,25 +189,42 @@ Add a New Project
 };
 
 // comment out this section to use the mockdata
-// promptUser()
-//   .then(promptProject)
-//   .then(portfolioData => {
-//     const pageHTML = generatePage(portfolioData);
+promptUser()
+  .then(promptProject)
+  .then(portfolioData => {
+    return generatePage(portfolioData);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
+  })
+  .then(writeFileResponse => {
+    console.log(writeFileResponse);
+    return copyFile();
+  })
+  .then(copyFileResponse => {
+    console.log(copyFileResponse);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
-//     fs.writeFile('./index.html', pageHTML, err => {
-//       if (err) throw new Error(err);
 
-//       console.log('Page created! Check out index.html in this directory to see it!');
-//     });
-//   });
+
+
+
 
 // having the file use the mockdata for testing
-const pageHTML = generatePage(mockData); 
-
-fs.writeFile('./index.html', pageHTML, err => {
-  if (err) throw new Error(err);
-
-  console.log('Page created! Check out index.html in this directory to see it!');
-});
+// writeFile(generatePage(mockData))
+//   .then(res => {
+//     console.log(res);
+//     return copyFile();
+//   })
+//   .then(res => {
+//     console.log(res);
+//     console.log('All Done!');
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 

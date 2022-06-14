@@ -35,3 +35,15 @@ Validate user answers with inquirer and conditionally prompt users based on answ
 Learn how to work with data more efficiently, using new JavaScript features and array methods.
 
 Use Node.js’s modularity to keep the functionality clean and easy to read.
+
+Used object destructuring and learned about the rest and spread operators to help keep the data organized.
+
+Broke a function into multiple pieces to make it easier to read the code for a specific section of the HTML template.
+
+Leveraged HTML elements by using new array methods .filter() and .map() to take input data and return HTML data with it.
+
+# 9.4
+
+Understand how to use the fs module to copy files from one location to another.
+
+Create JavaScript Promises to handle asynchronous functionality in a cleaner way.
